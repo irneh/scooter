@@ -1,0 +1,5 @@
+{% for obj in data %}
+<h1>{{ obj['name'] }}</h1>
+<img src="{{ obj['media'][0]['variants'][0]['url'] }}"/>
+<p>{{ obj['highlights'] }}</p>
+{% endfor %}

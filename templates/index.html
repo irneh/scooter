@@ -1,0 +1,32 @@
+<!doctype html>
+<title>high kerpix</title>
+<script src="/static/js/mithril.js"></script>
+<script>
+var app = {};
+
+app.Hike = function(data) {
+  return m.request({method: "GET", url: "/api/3554"});
+};
+
+app.vm = {};
+app.vm.init = function() {
+  this.hike = new app.Hike();
+};
+
+app.controller = function() {
+  app.vm.init();
+};
+
+app.view = function() {
+  return m("html", [
+    m("body", [
+      m("h1", app.vm.hike().name),
+      m("img", {src: app.vm.hike().media[0].variants[0].url}),
+      m("br"),
+      m("b", app.vm.hike().highlights),
+    ])
+  ])
+};
+
+m.module(document, {controller: app.controller, view: app.view});
+</script>
